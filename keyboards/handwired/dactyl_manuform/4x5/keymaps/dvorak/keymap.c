@@ -13,9 +13,9 @@ extern keymap_config_t keymap_config;
 #define ____ KC_TRNS
 
 #define SFT_ESC  SFT_T(KC_ESC)
-#define CTL_BSPC CTL_T(KC_BSPC)
+#define SFT_BSPC SFT_T(KC_BSPC)
 #define ALT_SPC  ALT_T(KC_SPC)
-#define SFT_ENT  SFT_T(KC_ENT)
+#define CTL_ENT  CTL_T(KC_ENT)
 
 #define KC_ML KC_MS_LEFT
 #define KC_MR KC_MS_RIGHT
@@ -26,6 +26,9 @@ extern keymap_config_t keymap_config;
 
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
+
+#define RAISE_TAB LT(_RAISE, KC_TAB)
+#define LOWER_DEL LT(_LOWER, KC_DEL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -39,14 +42,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+-------------,                             ,-------------+------+------+------,
  *        |  [   |   ]  |                                                         |   -  |   =  |
  *        '------+------'-------------'                             '-------------'------+------'
- *                      | ESC  | ENTER|                             | SPACE|  BS  |
+ *                      |  BS  | ENTER|                             | SPACE|  ESC |
  *                      |  +   |   +  |                             |  +   |  +   |
  *                      | SHIFT| CTRL |                             | ALT  |SHIFT |
  *                      '------+------'                             '------+------'
  *                                    '------+------' '------+------'
- *                                    | Lower|  ~   | | GUI  | Raise|
+ *                                    | TAB  |  ~   | | GUI  | DEL  |
+ *                                    |   +  |      | |      | +    |
+ *                                    | Raise|      | |      | Lower|
  *                                    '------+------' '------+------'
- *                                    | TAB  | HOME | | END  | DEL  |
+ *                                    | Raise| HOME | | END  | Lower|
  *                                    '------+------' '------+------'
  */
 
@@ -55,9 +60,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_A,    KC_O,    KC_E,    KC_U, KC_I,                                     KC_D, KC_H, KC_T,    KC_N,   KC_S, \
   KC_SCLN, KC_Q,    KC_J,    KC_K, KC_X,                                     KC_B, KC_M, KC_W,    KC_V,   KC_Z, \
            KC_LBRC, KC_RBRC,                                                             KC_MINS, KC_EQL,       \
-                                         SFT_ESC, SFT_ENT,   ALT_SPC, CTL_BSPC,                                 \
-                                         RAISE,   KC_GRV,    KC_LGUI, LOWER,                                    \
-                                         KC_TAB,  KC_HOME,   KC_END,  KC_DEL
+                                         SFT_ESC, CTL_ENT,   ALT_SPC, SFT_BSPC,                                 \
+                                         RAISE_TAB,   KC_GRV,    KC_LGUI, LOWER_DEL,                            \
+                                         RAISE,  KC_HOME,   KC_END,  KC_DEL
 ),
 
 /* Raise
