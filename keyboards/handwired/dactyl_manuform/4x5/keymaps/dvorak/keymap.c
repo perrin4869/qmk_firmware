@@ -12,8 +12,10 @@ extern keymap_config_t keymap_config;
 
 #define ____ KC_TRNS
 
-#define ALT_ESC  RALT_T(KC_ESC)
-#define CTL_BSPC LCTL_T(KC_BSPC)
+#define ALT_ESC  LALT_T(KC_ESC)
+#define CTL_BSPC RCTL_T(KC_BSPC)
+#define ALT_GRV  RALT_T(KC_GRV)
+#define CTL_GRV  LCTL_T(KC_GRV)
 #define SFT_SPC  SFT_T(KC_SPC)
 #define SFT_ENT  SFT_T(KC_ENT)
 
@@ -44,14 +46,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *        '------+------'-------------'                             '-------------'------+------'
  *                      |  ESC | ENTER|                             | SPACE|  BS  |
  *                      |  +   |   +  |                             |  +   |  +   |
- *                      | ALT  | SHIFT|                             | SHIFT| CTRL |
+ *                      | LALT | SHIFT|                             | SHIFT| RCTRL|
  *                      '------+------'                             '------+------'
  *                                    '------+------' '------+------'
- *                                    | TAB  | GUI  | |  ~   | DEL  |
+ *                                    | TAB  | GUI  | |  GUI | DEL  |
  *                                    |   +  |      | |      | +    |
  *                                    | Raise|      | |      | Lower|
  *                                    '------+------' '------+------'
- *                                    | Raise| HOME | | END  | Lower|
+ *                                    | LCTRL| HOME | | END  | RALT |
+ *                                    | +    |      | |      | +    |
+ *                                    | ~    |      | |      | ~    |
  *                                    '------+------' '------+------'
  */
 
@@ -60,9 +64,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_A,    KC_O,    KC_E,    KC_U, KC_I,                                     KC_D, KC_H, KC_T,    KC_N,   KC_S, \
   KC_SCLN, KC_Q,    KC_J,    KC_K, KC_X,                                     KC_B, KC_M, KC_W,    KC_V,   KC_Z, \
            KC_LBRC, KC_RBRC,                                                             KC_MINS, KC_EQL,       \
-                                         ALT_ESC, SFT_ENT,   SFT_SPC, CTL_BSPC,                                 \
-                                         RAISE_TAB,   KC_LGUI,    KC_GRV, LOWER_DEL,                            \
-                                         RAISE,  KC_HOME,   KC_END,  KC_DEL
+                                         ALT_ESC,   SFT_ENT,   SFT_SPC, CTL_BSPC,                               \
+                                         RAISE_TAB, KC_LGUI,   KC_RGUI,  LOWER_DEL,                             \
+                                         CTL_GRV,   KC_HOME,   KC_END,  ALT_GRV
 ),
 
 /* Raise
