@@ -2,6 +2,11 @@
 #include "action_layer.h"
 #include "eeconfig.h"
 
+// https://www.reddit.com/r/olkb/comments/8qppdn/qmk_issue_with_mt_when_typing_quickly
+#define IGNORE_MOD_TAP_INTERRUPT
+#undef  PERMISSIVE_HOLD
+#undef  PREVENT_STUCK_MODIFIERS
+
 extern keymap_config_t keymap_config;
 
 #define _BASE 0
